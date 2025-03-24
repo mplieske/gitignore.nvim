@@ -1,9 +1,10 @@
 local augroup = vim.api.nvim_create_augroup("GitIgnore", { clear = true })
 
 local function create_buffer()
-    local buf = vim.api.nvim_create_buf(true, true)
-    vim.api.nvim_buf_set_name(buf, "*gitignore*")
-    vim.api.nvim_set_option_value("filetype", "lua", { buf = buf })
+    local buffer = vim.api.nvim_create_buf(true, true)
+    vim.api.nvim_buf_set_name(buffer, "*gitignore*")
+    vim.api.nvim_set_option_value("filetype", "lua", { buf = buffer })
+    return buffer
 end
 
 local function main()
