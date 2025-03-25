@@ -23,7 +23,12 @@ local function main()
         row = math.floor((windows[1].height - height) / 2)
     end
 
-    vim.api.nvim_buf_set_lines(buffer, 0, -1, true, { "Welcome to gitignore.nvim!", "" })
+    vim.fn.jobstart('curl https://www.toptal.com/developers/gitignore/dropdown/templates.json', {
+        on_stdout = function (jobid, data, event)
+            vim.api.nvim_buf_set_lines(buffer, 0, -1, true, data)
+        end
+    })
+
     local window_number = vim.api.nvim_open_win(buffer, true, {
         relative="win",
         width=width,
