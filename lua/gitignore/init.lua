@@ -11,8 +11,6 @@ local function main()
     print("Hello from gitignore.nvim!")
     local buffer = create_buffer()
     vim.api.nvim_buf_set_lines(buffer, 0, -1, true, { "Welcome to gitignore.nvim!", "" })
-    vim.api.nvim_win_set_buf(0, buffer)
-    vim.api.nvim_win_set_cursor(0, { vim.api.nvim_buf_line_count(buffer), 0 })
     vim.api.nvim_open_win(buffer, true, {
         relative="win",
         width=100,
