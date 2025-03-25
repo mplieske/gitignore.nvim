@@ -18,7 +18,6 @@ local function main()
         width=100,
         height=10,
         border="single",
-        win=1001,
         row=20,
         col=20,
         zindex=10001
