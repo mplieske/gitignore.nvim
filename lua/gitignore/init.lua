@@ -23,6 +23,8 @@ local function main()
         row = math.floor((windows[1].height - height) / 2)
     end
 
+
+
     vim.api.nvim_buf_set_lines(buffer, 0, -1, true, { "Welcome to gitignore.nvim!", "" })
     local window_number = vim.api.nvim_open_win(buffer, true, {
         relative="win",
@@ -38,7 +40,8 @@ local function main()
 end
 
 local function setup()
-    vim.api.nvim_create_autocmd("VimEnter", { group = augroup, desc = "Test 123", once = true, callback = main })
+    vim.api.nvim_create_user_command("GitIgnore", main(), {})
+    -- vim.api.nvim_create_autocmd("VimEnter", { group = augroup, desc = "Test 123", once = true, callback = main })
 end
 
 return { setup = setup }
