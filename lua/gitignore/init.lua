@@ -8,16 +8,29 @@ local function create_buffer()
 end
 
 local function main()
-    print("Hello from gitignore.nvim!")
     local buffer = create_buffer()
+
+    local width = 200
+    local height = 20
+    local column = 10
+    local row = 10
+
+    local windows = vim.api.nvim_list_uis()
+    if #windows > 0 then
+        width = math.floor(windows[1].width * 0.8)
+        height = math.floor(windows[1].height * 0.8)
+        column = math.floor((windows[1].width - width) / 2)
+        row = math.floor((windows[1].height - height) / 2)
+    end
+
     vim.api.nvim_buf_set_lines(buffer, 0, -1, true, { "Welcome to gitignore.nvim!", "" })
     vim.api.nvim_open_win(buffer, true, {
         relative="win",
-        width=100,
-        height=10,
+        width=width,
+        height=height,
         border="single",
-        row=20,
-        col=20,
+        row=row,
+        col=column,
         zindex=10001
     })
 end
