@@ -24,7 +24,7 @@ local function main()
     end
 
     vim.api.nvim_buf_set_lines(buffer, 0, -1, true, { "Welcome to gitignore.nvim!", "" })
-    vim.api.nvim_open_win(buffer, true, {
+    local window_number = vim.api.nvim_open_win(buffer, true, {
         relative="win",
         width=width,
         height=height,
@@ -33,6 +33,8 @@ local function main()
         col=column,
         zindex=10001
     })
+
+    vim.api.nvim_set_option_value("number", true, { win = window_number })
 end
 
 local function setup()
