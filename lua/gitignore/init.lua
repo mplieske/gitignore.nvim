@@ -40,7 +40,7 @@ local function main()
 end
 
 local function setup()
-    vim.api.nvim_create_user_command("GitIgnore", main(), {})
+    vim.api.nvim_create_user_command("GitIgnore", main, {})
     -- vim.api.nvim_create_autocmd("VimEnter", { group = augroup, desc = "Test 123", once = true, callback = main })
 end
 
